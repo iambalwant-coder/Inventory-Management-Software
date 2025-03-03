@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'product_list' %}">Product List</a> |
+      <a href="{% url 'order_list' %}">Order List</a> |
+      <a href="{% url 'add_product' %}">Add Product</a> |
+      <a href="{% url 'add_order' %}">Add Order</a> |
+      <a href="{% url 'add_category' %}">Add Category</a>
+    </nav>
+    <h1>Order List</h1>
+    <ul>
+      {% for order in orders %}
+      <li>
+        {{ order.quantity }} of {{ order.product.name }} ordered on
+        <b>{{ order.date_ordered }}</b>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
